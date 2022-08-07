@@ -5,21 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
   
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
-
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
+  <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-  <h1>Hello world</h1>
+  <main class="main">
+    <div class="header">
+      <img src="./images/logo.svg" alt="logo">
+      <div class="score-container">
+        <p class="text">SCORE</p>
+        <p class="score">15</p>
+      </div>
+    </div>
+
+    <div class="game-container" style="display: none;">
+        <img src="./images/bg-triangle.svg" alt="traingle" class="traingle">
+        <div class="icon paper" id="paper">
+          <img src="./images/icon-paper.svg" alt="">
+        </div>
+        <div class="icon scissors" id="scissor">
+          <img src="./images/icon-scissors.svg" alt="">
+        </div>
+        <div class="icon rock" id="rock">
+          <img src="./images/icon-rock.svg" alt="">
+        </div>
+    </div>
+
+    <div class="result-container">
+      <div class="left">
+        <p>YOU PICKED</p>
+        <div class="icons">
+          <img src="./images/icon-paper.svg" alt="">
+        </div>
+        <span class="circles"></span>
+      </div>
+      <div class="middle">
+        <p class="message">message</p>
+        <button class="play-again-btn">play again</button>
+      </div>
+      <div class="right">
+        <p>THE HOUSE PICKED</p>
+        <div class="icons">
+          <img src="./images/icon-scissors.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <button class="rules-btn">RULES</button>
+
+  </main>
+  <script src="js/script.js"></script>
 </body>
 </html>
