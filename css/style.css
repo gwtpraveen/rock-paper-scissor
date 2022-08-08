@@ -101,6 +101,7 @@ body {
     bottom: 5%;
     right: 10%;
     padding: .5em 2em;
+    cursor: pointer;
     /* background-color: transparent; */
 }
 
@@ -203,6 +204,26 @@ body {
 
 }
 
+.rules {
+    position: absolute;
+    background-color: #fff;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.rules .rules-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+.rules .rules-header .close-img {
+    cursor: pointer;
+}
 
 /* box-shadow: inset 0 0.3rem 0 2px rgba(64, 64, 64, 0.25), 0 0.5rem 0 0px #b02f2d; */
     /* box-shadow: inset 0 0.3rem 0 2px rgba(64, 64, 64, 0.25), 0 0.5rem 0 0px rgb(117, 219, 47); */
