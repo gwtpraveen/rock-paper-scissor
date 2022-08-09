@@ -9,18 +9,19 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    overflow: hidden;
 }
 
 /* header */
 .header {
     display: flex;
     width: 600px;
-    background-color: red;
     margin: 3rem auto 1rem;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    border: 3px solid black;
+    border: 3px solid hsl(217, 16%, 45%);
     border-radius: 20px;
 }
 
@@ -33,11 +34,13 @@ body {
 
 .header .score-container .text {
     font-size: .7rem;
+    color: hsl(229, 64%, 46%);
 }
 
 .header .score-container .score {
     font-size: 2.5rem;
     font-weight: bolder;
+    color: hsl(229, 25%, 31%);
 }
 
 /* game container  */
@@ -76,7 +79,7 @@ body {
     border-radius: 50%;
     left: 50%;
     top: 50%;
-    box-shadow: 0 0.5rem 0 0px #000000;
+    box-shadow: 0 0.5rem 0 0px rgb(102, 5, 151);
     transform: translate(-50%, -50%);
 }
 
@@ -100,9 +103,12 @@ body {
     position: absolute;
     bottom: 5%;
     right: 10%;
-    padding: .5em 2em;
+    padding: .6em 3em;
     cursor: pointer;
-    /* background-color: transparent; */
+    background-color: transparent;
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 5px;
+    color: #fff;
 }
 
 /* resutl container  */
@@ -122,6 +128,7 @@ body {
     align-items: center;
     gap: 3rem;
     position: relative;
+    color: #fff;
 }
 
 .result-container .left .icons, .result-container .right .icons {
@@ -157,18 +164,31 @@ body {
 
 .result-container .middle .message {
     font-size: 2.5rem;
+    color: #fff;
+    font-weight: bolder;
 }
 
 .result-container .middle .play-again-btn {
     margin-top: 1rem;
     padding: 1em 3em;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 250ms ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.result-container .middle .play-again-btn:hover {
+    color: red;
 }
 
 .result-container .circles {
     position: absolute;
     width: 400px;
     height: 400px;
-    background-color: rgba(128, 0, 128, 0.056);
+    background-color: hsl(229, 25%, 31%);
     z-index: -2;
     left: 50%;
     top: 66%;
@@ -184,9 +204,9 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    width: 130%;
-    height: 130%;
-    background-color: rgba(255, 0, 0, 0.057);
+    width: 140%;
+    height: 140%;
+    background-color: hsla(228, 25%, 31%, 0.652);
 
 }
 
@@ -198,9 +218,9 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    width: 160%;
-    height: 160%;
-    background-color: rgba(255, 0, 0, 0.046);
+    width: 180%;
+    height: 180%;
+    background-color: hsla(228, 25%, 31%, 0.197);
 
 }
 
@@ -213,6 +233,7 @@ body {
     transform: translate(-50%, -50%);
     padding: 2rem;
     border-radius: 10px;
+    display: none;
 }
 
 .rules .rules-header {
@@ -223,6 +244,10 @@ body {
 
 .rules .rules-header .close-img {
     cursor: pointer;
+}
+
+body.show .rules {
+    display: block;
 }
 
 /* box-shadow: inset 0 0.3rem 0 2px rgba(64, 64, 64, 0.25), 0 0.5rem 0 0px #b02f2d; */
