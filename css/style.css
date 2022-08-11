@@ -11,6 +11,8 @@ body {
     min-height: 100vh;
     background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
     overflow: hidden;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
 }
 
 /* header */
@@ -35,6 +37,7 @@ body {
 .header .score-container .text {
     font-size: .7rem;
     color: hsl(229, 64%, 46%);
+    letter-spacing: 2px;
 }
 
 .header .score-container .score {
@@ -115,7 +118,8 @@ body {
 .result-container {
     /* background-color: greenyellow; */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 4rem;
     min-width: 700px;
     margin: 8rem auto;
     align-items: center;
@@ -129,6 +133,7 @@ body {
     gap: 3rem;
     position: relative;
     color: #fff;
+    font-size: 1.2rem;
 }
 
 .result-container .left .icons, .result-container .right .icons {
@@ -158,8 +163,17 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.result-container .right .empty {
+    width: 160px;
+    height: 160px;
+    background-color: #00000081;
+    border-radius: 50%;
+    transform: scale(130%);
+}
+
 .result-container .middle {
     text-align: center;
+    display: none;
 }
 
 .result-container .middle .message {
