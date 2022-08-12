@@ -7,6 +7,8 @@ const resultContainerEl = document.querySelector(".result-container");
 const yourChoiseIcon = document.querySelector(".your-choise-icon");
 
 const messageEl = document.querySelector(".result-container .middle");
+const scoreEl = document.querySelector(".header .score-container .score");
+const playAgainBtnEl = document.querySelector(".middle .play-again-btn");
 
 const PAPER = "paper";
 const SCISSOR = "scissor";
@@ -31,6 +33,25 @@ const data = {
 }
 
 
+// set score 
+let score;
+try {
+    score = Number(localStorage.getItem("score"))
+} catch(err) {
+    localStorage.setItem("score", 0)
+    score = 0;
+} finally {
+    scoreEl.innerText = score;
+}
+
+
+function updateScore() {
+    score++;
+    scoreEl.innerText = score;
+    localStorage.setItem("score", score);
+}
+
+
 function winOrNot(userChoise, computerChoise) {
     if (userChoise === ROCK && computerChoise === SCISSOR) {
         return "win";
@@ -52,18 +73,43 @@ function randomChoise() {
 }
 
 
-rockEl.addEventListener("click", () => {
+function playAgain() {
+    resultContainerEl.style.display = "none";
+    gameContainerEl.style.display = "block";
+    try {
+        document.querySelector(".circles").remove();
+    } catch (err) {
+        console.warn("removing circles")
+    }
+    document.querySelector(".right .icons").remove();
+    const spanEl = document.createElement("span");
+    spanEl.classList.add("empty");
+    document.querySelector(".right").append(spanEl);
+
+    messageEl.style.display = "none";
+}
+
+
+function main(icon) {
     const computerChoise = randomChoise();
-    const userChoise = ROCK;
+    const userChoise = icon;
     gameContainerEl.style.display = "none";
     resultContainerEl.style.display = "flex";
-    yourChoiseIcon.src = "./images/icon-rock.svg";
+    yourChoiseIcon.src = data[icon]["icon"];
+    
     setTimeout(() => {
-        document.querySelector(".empty").remove();
+        try {
+            document.querySelector(".empty").remove();
+        } catch (err) {
+            console.warn("nothing")
+        }
         imgEl.src = data[computerChoise]["icon"]
         document.querySelector(".right").append(iconsEl);
+        
+        // Determine whether or not the user won
         const result = winOrNot(userChoise, computerChoise);
         setTimeout(() => {
+            // Dispaly the corresponding message
             if (result === "win") {
                 const leftEl = document.querySelector(".result-container .left");
                 const spanEl = document.createElement("span");
@@ -71,6 +117,7 @@ rockEl.addEventListener("click", () => {
                 leftEl.append(spanEl);
                 messageEl.firstElementChild.innerText = "YOU WIN";
                 messageEl.style.display = "block";
+                updateScore();
             } else if (result === "lost") {
                 const rightEl = document.querySelector(".result-container .right");
                 const spanEl = document.createElement("span");
@@ -84,15 +131,19 @@ rockEl.addEventListener("click", () => {
             }
         }, 500)
     }, 1000)
+}
 
 
+rockEl.addEventListener("click", () => {
+    main(ROCK)
 });
 
 paperEl.addEventListener("click", () => {
-    console.log("click paper");
+    main(PAPER)
 });
 
 scissorEl.addEventListener("click", () => {
-    console.log("click scissor");
+    main(SCISSOR)
 });
 
+playAgainBtnEl.addEventListener("click", playAgain);
