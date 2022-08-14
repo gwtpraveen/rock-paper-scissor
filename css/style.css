@@ -4,13 +4,20 @@
     padding: 0;
 }
 
+:root {
+    --left-color : red;
+    --left-shadow : rgb(138, 18, 18);
+    --right-color : blue;
+    --right-shadow : rgb(17, 17, 154);
+}
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-weight: 600;
 }
@@ -62,7 +69,7 @@ body {
 .icon {
     width: 140px;
     height: 140px;
-    background-color: greenyellow;
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +89,6 @@ body {
     border-radius: 50%;
     left: 50%;
     top: 50%;
-    box-shadow: 0 0.5rem 0 0px rgb(102, 5, 151);
     transform: translate(-50%, -50%);
 }
 
@@ -91,15 +97,30 @@ body {
     top: -10%;
 }
 
+.paper::after {
+    background-color: hsl(230, 89%, 65%);
+    box-shadow: 0 0.4rem 0 0px hsl(230, 56%, 43%);
+}
+
 .scissors {
     right: -10%;
     top: -10%;
 
 }
+ 
+.scissors::after {
+    background-color: hsl(40, 84%, 53%);
+    box-shadow: 0 0.4rem 0 0px hsl(39, 87%, 31%);
+}
 
 .rock {
     bottom: -5%;
     left: 32%;
+}
+
+.rock::after {
+    background-color: hsl(349, 70%, 56%);
+    box-shadow: 0 0.4rem 0 0px hsl(349, 64%, 37%);
 }
 
 .rules-btn {
@@ -139,7 +160,7 @@ body {
 .result-container .left .icons, .result-container .right .icons {
     width: 160px;
     height: 160px;
-    background-color: greenyellow;
+    background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,13 +175,21 @@ body {
     width: 130%;
     height: 130%;
     position: absolute;
-    background-color: rgb(152, 8, 225);
     z-index: -1;
     border-radius: 50%;
     left: 50%;
     top: 50%;
-    box-shadow: 0 0.5rem 0 0px #000000;
     transform: translate(-50%, -50%);
+}
+
+.result-container .left .icons::after {
+    background-color: var(--left-color);
+    box-shadow: 0 0.5rem 0 0px var(--left-shadow);
+}
+
+.result-container .right .icons::after {
+    background-color: var(--right-color);
+    box-shadow: 0 0.5rem 0 0px var(--right-shadow);
 }
 
 .result-container .right .empty {
@@ -264,5 +293,53 @@ body.show .rules {
     display: block;
 }
 
-/* box-shadow: inset 0 0.3rem 0 2px rgba(64, 64, 64, 0.25), 0 0.5rem 0 0px #b02f2d; */
-    /* box-shadow: inset 0 0.3rem 0 2px rgba(64, 64, 64, 0.25), 0 0.5rem 0 0px rgb(117, 219, 47); */
+@media (max-width: 600px) {
+    .header {
+        width: 320px;
+    }
+    
+    .header img {
+        width: 80px;
+    }
+
+    .game-container {
+        width: 240px;
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .result-container .left .icons, .result-container .right .icons {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .result-container {
+        position: relative;
+    }
+
+    .result-container .middle {
+        position: absolute;
+        top: 110%;
+        width: 50%;
+    }
+
+    .result-container .right .empty {
+        width: 100px;
+        height: 100px;
+    }
+
+    .result-container .circles {
+        width: 150px;
+        height: 150px;
+        top: 73%;
+    }
+
+    .rules-btn {
+        right: 50%;
+        bottom: 2%;
+        transform: translateX(50%);
+    }
+}

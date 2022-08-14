@@ -11,11 +11,13 @@ const messageEl = document.querySelector(".result-container .middle");
 const scoreEl = document.querySelector(".header .score-container .score");
 const playAgainBtnEl = document.querySelector(".middle .play-again-btn");
 
+// game variables
 const PAPER = "paper";
 const SCISSOR = "scissor";
 const ROCK = "rock";
 const CHOICES = [ROCK, PAPER, SCISSOR];
 
+// create DOM element with (img inside div)
 const iconsEl = document.createElement("div");
 const imgEl = document.createElement("img");
 iconsEl.append(imgEl);
@@ -112,6 +114,7 @@ function main(icon) {
     root.style.setProperty("--left-shadow", data[icon]["shadow"]);
     root.style.setProperty("--right-color", data[computerChoise]["color"]);
     root.style.setProperty("--right-shadow", data[computerChoise]["shadow"]);
+
     gameContainerEl.style.display = "none";
     resultContainerEl.style.display = "flex";
     yourChoiseIcon.src = data[icon]["icon"];
